@@ -31,7 +31,7 @@ def calculateOperation(_firstNum,_secondNum,operation):
             return None
     elif(operation == 7):
         print("Adios \n")
-        return None
+        return "exit"
     else:
         return None
 
