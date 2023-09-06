@@ -1,0 +1,13 @@
+.fondo{
+    background-image: url('./multimedia/arbol-solitario.jpg');
+    background-size: cover; /* Ajustar el tamaño de la imagen para todo el div */
+    background-position: center center; /* Centrar vertical y horizontalmente */
+    width: 100%; /* Ajustar el ancho según tus necesidades */
+    height: 400px; /* Ajustar la altura según tus necesidades */
+}
+
+h1{
+    color: #ffff;
+    font-family: 'Rubik', sans-serif;
+    font-size: 5rem;
+}

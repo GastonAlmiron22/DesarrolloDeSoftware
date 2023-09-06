@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNEISI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+</head>
+<body class="fondo">
+    <header>
+        <div class="title">
+            <h1>
+                <strong>Se parte de CNEISI </br>¡Descubre tu Futuro!</strong>
+            </h1>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        </div>
+    </header>
+    <nav>
+        <div class="menu">
+            <ul>
+                <button type="button" class="btn btnMenu">
+                    <i class="bi bi-house fs-4 iconHome"></i>
+                    <span class="btn-text">Inicio</span>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="justify-content-center">
+                            <form class="">
+                                <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleInputName" class="form-label">Nombre</label>
+                                  <input type="password" class="form-control" id="exampleInputLastN ame">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleInputLastname" class="form-label">Apellido</label>
+                                  <input type="password" class="form-control" id="exampleInputLastname">
+                                </div>
+                                <div class="mb-3 form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">Necesito información sobre hospedajes</label>
+                                </div>
+                              </form>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-primary" id="mostrarNotificacion">Registrarme</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btnMenu" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi bi-clipboard-plus fs-4 iconHome"></i>
+                    <span class="btn-text">Inscripción</span>
+                </button>
+                <button type="button" class="btn btnMenu">
+                    <i class="bi bi-chat-left-text fs-4 iconHome"></i>
+                    <span class="btn-text">Contacto</span>
+                </button>
+                <button type="button" class="btn btnMenu">
+                    <i class="bi bi-calendar-heart fs-4 iconHome"></i>
+                    <span class="btn-text">Calendario</span>
+                </button>
+            </ul>
+        </div>
+        <div></div>
+    </nav>
+    <main>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p>© 2023 CNEISI</p>
+                </div>
+                <div class="col-6 text-center">
+                    <span>
+                        <i class="bi bi-facebook"> Facebook</i>
+                    </span>
+                    <span class="mx-3">
+                        <i class="bi bi-twitter"> Twetter</i>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <i class="bi bi-geo-alt">Universida Tecnológica Nacional</i>
+                    </span>
+                </div>
+                
+        </div>
+    </footer>
+</body>
+</html>
+
+<script>
+</script>
+
+<style>
+    .fondo{
+    background-image: url('./multimedia/arbol-solitario.jpg');
+    background-size: cover;
+    background-position: center center; 
+    width: 100%;
+    height: 400px; 
+    background-repeat: no-repeat;
+}
+
+h1{
+    color: #ffff;
+    font-family: 'Rubik', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+}
+@media (max-width: 768px) {
+    body {
+        background-size: contain;
+        background-position: center;
+    }
+}
+
+.btn-text{
+    display: none;
+}
+
+.btnMenu{
+    background-color: #D5FFD0;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 5%;
+    border: none;
+}
+
+.btnMenu:hover{
+    background-color: #FFD0D5;
+    opacity: 0.5;
+    width: 8rem;
+    height: 8rem;
+}
+
+.btnMenu:hover .iconHome{
+    display: none;
+}
+
+.btnMenu:hover .btn-text{
+    display: inline;
+    color: black;
+    font-family: 'Rubik', sans-serif;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #D5FFD0;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
