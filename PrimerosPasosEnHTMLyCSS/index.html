@@ -28,44 +28,6 @@
                     <i class="bi bi-house fs-4 iconHome"></i>
                     <span class="btn-text">Inicio</span>
                 </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="justify-content-center">
-                            <form class="">
-                                <div class="mb-3">
-                                  <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="exampleInputName" class="form-label">Nombre</label>
-                                  <input type="password" class="form-control" id="exampleInputLastN ame">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="exampleInputLastname" class="form-label">Apellido</label>
-                                  <input type="password" class="form-control" id="exampleInputLastname">
-                                </div>
-                                <div class="mb-3 form-check">
-                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                  <label class="form-check-label" for="exampleCheck1">Necesito información sobre hospedajes</label>
-                                </div>
-                              </form>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn-primary" id="mostrarNotificacion">Registrarme</button>
-                        </div>
-                      </div>
-                    </div>
-                </div>
                 <button type="button" class="btn btnMenu" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="bi bi-clipboard-plus fs-4 iconHome"></i>
                     <span class="btn-text">Inscripción</span>
@@ -74,7 +36,7 @@
                     <i class="bi bi-chat-left-text fs-4 iconHome"></i>
                     <span class="btn-text">Contacto</span>
                 </button>
-                <button type="button" class="btn btnMenu">
+                <button type="button" class="btn btnMenu" data-bs-toggle="modal" data-bs-target="#modalCalendario">
                     <i class="bi bi-calendar-heart fs-4 iconHome"></i>
                     <span class="btn-text">Calendario</span>
                 </button>
@@ -83,6 +45,72 @@
         <div></div>
     </nav>
     <main>
+        <!-- Modal Calendario-->
+        <div class="modal fade" id="modalCalendario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-body" style="background-color: black">
+                        <h1 class="modal-title fs-5 " style="color: rgb(247, 241, 241);font-family: sans-serif; font-style: normal;" id="exampleModalLabel">Calendario</h1>
+                        <div id="calendar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h1 class="modal-title fs-5 " style="color: black;font-family: sans-serif; font-style: normal; text-;" id="exampleModalLabel">Registro</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="justify-content-center">
+                    <form class="">
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Correo electronico</label>
+                          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                          <span id="emailError" style="color: red;"></span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="firstName" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="mb-3">
+                          <label for="lastName" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" style="background-color: #FFC8C8;" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Necesito información sobre hospedajes</label>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+                <div class="d-grid gap-2 mx-3 mb-3">
+                    <button type="submit" class="btn btnRegister" data-bs-dismiss="modal" id="liveToastBtn" onclick="clearForm()">Registrarme</button>
+                    <button type="button" class="btn btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--Alerta-->
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+              <div class="toast-header">
+                <img src="./multimedia/icons8-success-50.png" class="rounded me-2" width="20" height="20">
+                <strong class="me-auto">Bienvenido</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Se ha registrado exitosamente
+              </div>
+            </div>
+        </div>
+
     </main>
     <footer class="footer">
         <div class="container">
@@ -110,6 +138,42 @@
 </html>
 
 <script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+
+    var emailInput = document.getElementById("email");
+    var firstName = document.getElementById("firstName");
+    var lastName = document.getElementById("lastName");
+    var emailError = document.getElementById("emailError");
+    var buttonSubmit = document.getElementById("liveToastBtn");
+
+    if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+        });
+        
+    }
+    clearForm = () => {
+        emailInput.value = null;
+        emailError.textContent = null;
+        firstName.value = null;
+        lastName.value = null;
+    }
+
+    emailInput.addEventListener("input", function() {
+        if (isValidEmail(emailInput.value)) {
+            emailError.textContent = "";
+            buttonSubmit.removeAttribute('disabled');
+        } else {
+            emailError.textContent = "El correo electrónico no es válido";
+            buttonSubmit.setAttribute('disabled', true);
+        }
+    });
+    function isValidEmail(email) {
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailPattern.test(email);
+    }
 </script>
 
 <style>
@@ -120,6 +184,13 @@
     width: 100%;
     height: 400px; 
     background-repeat: no-repeat;
+}
+
+.modal-header{
+    background-color: #FFC8C8;
+}
+.form-check-input{
+    cursor: pointer;
 }
 
 h1{
@@ -173,7 +244,22 @@ h1{
     font-family: 'Rubik', sans-serif;
 }
 
+.btnRegister{
+    background-color: #FFD0D5;
+}
+.btnRegister:hover{
+    background-color: #f3949e;
+}
+
+.btnCancel{
+    background-color: #aaa3f6;
+}
+.btnCancel:hover{
+    background-color: #7367f8;
+}
+
 .menu{
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
 }
