@@ -1,0 +1,11 @@
+#Agregar esta linea para la base de datos en el archivo settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': 'transporteEscolar',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'LAPTOP-PJAUQU41',
+        'PORT': '',     
+    }
+}
