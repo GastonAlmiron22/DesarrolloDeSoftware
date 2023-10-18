@@ -1,35 +1,7 @@
 <script setup lang="ts">
 import Card from 'primevue/card';
-import {CarModelMock} from './components/Models/CarModel.ts'
-import { onMounted, ref } from "vue";
 import Menubar from 'primevue/menubar';
-import 'primeicons/primeicons.css';
-import axios from 'axios';
-import router from './router.ts';
-
-const formatCurrency = (value: number) => {
-    return value.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
-}
-
-const toUpperCase = (value: string) => {
-    return value.toUpperCase();
-}
-
-const showCard = () => {
-    
-}
-const carList = ref<CarModelMock[]>();
-const getCarList = () => {
-    axios.get('http://localhost:8000/cars')
-    .then(response => {
-        console.log(response.data);
-        carList.value = response.data;
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
-
+import {ref} from 'vue';
 const items = ref([
     {
         label: 'Coches',
@@ -112,20 +84,12 @@ const items = ref([
         icon: 'pi pi-fw pi-power-off'
     }
 ]);
-
-onMounted(() => {
-    getCarList();
-})
 </script>
-
 <template>
-    <router-view></router-view>
-  <!-- <div class="card z-2">
+    <div class="home">
+        <div class="card z-2">
         <Menubar :model="items" />
-    </div>
-  <div class="text-center">
-    <h1>Flota de Vehiculos</h1>
-  </div>  
+    </div> 
     <div class="grid">
         <div v-for="car in carList" class="col-3 text-center flex justify-content-center align-items-center">
             <Card class="carCards" style="width: 15em;" @click="showCard">
@@ -152,46 +116,8 @@ onMounted(() => {
                 </template>
             </Card>
         </div>
-    </div> -->
+    </div>
+    </div>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-h1{
-  color: #ffff;
-}
-
-.cardIndividual{
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    width: 100%;
-}
-.carCards{
-  background-color: #15041d;
-}
-
-.carCards:hover::before{
-    transform: scale(1.1);
-  box-shadow: 0 0 15px #ffee10;
-}
-.carCards:hover{
-    background-color: rgb(144, 115, 156); 
-    width: 20em;
-    height: 15em;
-}
-
-.p-card .p-card-body {
-    padding: 0.4rem;
-}
+<style>
 </style>
