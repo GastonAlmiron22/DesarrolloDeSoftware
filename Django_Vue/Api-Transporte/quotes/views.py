@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db import connection
 
 # Create your views here.
 from quotes.models import Car, Driver, School, SchoolTrip, Student, StudentTrip, Trip
@@ -46,6 +47,11 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         model = Trip
         fields = ['driver', 'car', 'date']
 
+class TripSerializerSP(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Trip
+        fields = ['driver']
+
 class TripViewSet(viewsets.ModelViewSet):
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
@@ -85,6 +91,15 @@ class StudentTripViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['studentId', 'tripId', 'studentTripCode']
 
+class ObtenerViajesViewSet(viewsets.ModelViewSet):
+    serializer_class = TripSerializerSP
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['carId']
+    def get_queryset(self):
+        with connection.cursor() as cursor:
+            cursor.execute("EXEC obtenerViajes ?", (1))
+            rows = cursor.fetchall()
+        return rows
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -96,5 +111,6 @@ router.register(r'trips', TripViewSet)
 router.register(r'schoolstrips', SchoolTripViewSet)
 router.register(r'students', StudentViewSet)
 router.register(r'studenttrips', StudentTripViewSet)
+router.register(r'obtenerViajes', ObtenerViajesViewSet, basename='obtenerViajes')
 
 

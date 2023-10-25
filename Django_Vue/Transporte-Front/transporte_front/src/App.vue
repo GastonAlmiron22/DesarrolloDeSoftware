@@ -3,24 +3,22 @@ import Card from 'primevue/card';
 import {CarModelMock} from './components/Models/CarModel.ts'
 import { onMounted, ref } from "vue";
 import Menubar from 'primevue/menubar';
+import Dialog from 'primevue/dialog';
+import Button from 'primevue/button';
+import InputText from 'primevue/inputtext';
 import 'primeicons/primeicons.css';
 import axios from 'axios';
 import router from './router.ts';
 
-const formatCurrency = (value: number) => {
-    return value.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
-}
-
-const toUpperCase = (value: string) => {
-    return value.toUpperCase();
-}
-
-const showCard = () => {
-    
-}
-
+const isUserLogged = ref(false);
+const visible = ref(false);
 
 const items = ref([
+    {
+        label: 'Inicio',
+        icon: 'pi pi-fw pi-home',
+        route: '/'
+    },
     {
         label: 'Coches',
         icon: 'pi pi-fw pi-car',
@@ -28,11 +26,12 @@ const items = ref([
             {
                 label: 'Nuevo Coche',
                 icon: 'pi pi-fw pi-plus',
-               
+                route: 'newCar'
             },
             {
                 label: 'Flota',
-                icon: 'pi pi-fw pi-list'
+                icon: 'pi pi-fw pi-list',
+                route: '/carList'
             }
         ]
     },
@@ -99,21 +98,69 @@ const items = ref([
     },
     {
         label: 'Salir',
-        icon: 'pi pi-fw pi-power-off'
+        icon: 'pi pi-fw pi-power-off',
+        visible: isUserLogged.value
+    },
+    {
+        label: 'Iniciar Sesión',
+        icon: 'pi pi-fw pi-sign-in',
+        route: '/login',
+        visible: !isUserLogged.value
     }
 ]);
 
-
+const goToRoute = (event: any) => {
+    router.push('/carList');
+}
 </script>
 
 <template>
-    <router-view></router-view>
-    <div class="card z-2">
-        <Menubar :model="items" />
+    <div class="card z-2 menubar">
+        <Menubar :model="items">
+            <template #item="{ label, item, props, root, hasSubmenu }">
+                <router-link v-if="item.route" v-slot="routerProps" :to="item.route" custom>
+                    <a :href="routerProps.href" v-bind="props.action" @click="routerProps.navigate">
+                        <span v-bind="props.icon" />
+                        <span v-bind="props.label">{{ label }}</span>
+                    </a>
+                </router-link>
+                <a v-else :href="item.url" :target="item.target" v-bind="props.action">
+                    <span v-bind="props.icon" />
+                    <span v-bind="props.label">{{ label }}</span>
+                    <span :class="[hasSubmenu && (root ? 'pi pi-fw pi-angle-down' : 'pi pi-fw pi-angle-right')]" v-bind="props.submenuicon" />
+                </a>
+            </template>
+        </Menubar>
     </div>
+    <router-view></router-view>
+    <Dialog v-model:visible="visible" header="Nuevo conductor" :style="{ width: '50vw' }" :modal="true" :draggable="false">
+    <p class="m-0">
+        <span class="p-float-label">
+            <InputText id="float-input" type="text"/>
+            <label for="float-input">Marca</label>
+        </span>
+    </p>
+    <template #footer>
+        <span class="flex justify-content-between">
+            <Button label="No" class=""/>
+            <Button label="Yes" icon="pi pi-check"/>
+        </span>
+    </template>
+    </Dialog>
 </template>
 
 <style scoped>
+
+.menubar{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.modal{
+    background-color: #771ea0;
+    color: #ffff;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

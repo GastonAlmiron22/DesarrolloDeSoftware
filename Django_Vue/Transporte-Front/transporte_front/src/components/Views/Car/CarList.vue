@@ -4,8 +4,18 @@ import { onMounted } from 'vue';
 import axios from 'axios';
 import { ref } from 'vue';
 import {CarModelMock} from '../../Models/CarModel';
+import 'primeicons/primeicons.css';
+
 
 const carList = ref<CarModelMock[]>();
+
+const formatCurrency = (value: number) => {
+    return value.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
+}
+
+const toUpperCase = (value: string) => {
+    return value.toUpperCase();
+}
 
 const getCarList = () => {
     axios.get('http://localhost:8000/cars')
@@ -27,9 +37,9 @@ onMounted(() => {
   </div>  
     <div class="grid">
         <div v-for="car in carList" class="col-3 text-center flex justify-content-center align-items-center">
-            <Card class="carCards" style="width: 15em;" @click="showCard">
+            <Card class="carCards" style="width: 15em;">
                 <template #header>
-                    <img src="./assets/icons8-car-100.png" style="height: 3rem;"/>
+                    <img src="../../../assets/icons8-car-100.png" style="height: 3rem;"/>
                 </template>
                 <template #content >
                     <div class="flex justify-content-between cardIndividual" style="background-color: #35062e;">
